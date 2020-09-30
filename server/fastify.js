@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const moment = require('moment');
 
-const handleSocket = require('./handle');
+const handleSocket = require('./handle.socket');
 
 function handleConnection(connection) {
 	const {socket} = connection;

@@ -3,6 +3,10 @@
 	"version": "1.0.0",
 	"main": "server.js",
 	"license": "MIT",
+	"scripts": {
+		"http": "node http",
+		"fastify": "node fastify"
+	},
 	"dependencies": {
 		"fastify": "^3.4.1",
 		"fastify-websocket": "^2.0.7",
