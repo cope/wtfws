@@ -7,6 +7,7 @@ Notice that both **fastify.js** and **http.js** use the same **handleSocket** fu
 ### [Fastify](https://www.fastify.io) with [fastify-websocket](https://github.com/fastify/fastify-websocket)
 ```
     cd server
+    yarn
     node fastify.js
 ```
 
@@ -25,6 +26,7 @@ Once the server gets stuck on message 58 again, just close the browser tab.
 ### Plain [http](https://github.com/nodejs/node/blob/v14.13.0/lib/http.js) with [ws](https://github.com/websockets/ws)
 ```
     cd server
+    yarn
     node http.js
 ```
 Just open ```client/http.html``` in the browser, open the console.
