@@ -2,23 +2,19 @@
 
 ### Repro
 
-Notice that both fastify.js and http.js use the same handle.js function for handling the socket.
+Notice that both fastify.js and http.js use the same handleSocket function, from handle.socket.js, for handling the socket.
 
 #### [Fastify](https://www.fastify.io) with [fastify-websocket](https://github.com/fastify/fastify-websocket)
 
     cd server
     node fastify.js
 
-In client/ws.js uncomment the fastify section on top and comment out the http section.
+In client/index.html set the MODE value to 'fastify'
 It should look like this:
 
-    // Fastify with fastify-websocket
-    const socket = new WebSocket('ws://localhost:3000/ws');
-    const COUNT = 60;
-    
-    // Plain http with ws
-    // const socket = new WebSocket('ws://localhost:3001');
-    // const COUNT = 10000;
+    <script>
+        window.MODE = 'fastify';
+    </script>
 
 Then just open client/index.html in the browser, open the console.
 
@@ -31,16 +27,12 @@ Once the server gets stuck on message 58 again, just close the browser tab.
     cd server
     node http.js
 
-In client/ws.js uncomment the http section on top and comment out the fastify section.
+In client/index.html set the MODE value to 'http'
 It should look like this:
 
-    // Fastify with fastify-websocket
-    // const socket = new WebSocket('ws://localhost:3000/ws');
-    // const COUNT = 60;
-    
-    // Plain http with ws
-    const socket = new WebSocket('ws://localhost:3001');
-    const COUNT = 10000;
+    <script>
+        window.MODE = 'http';
+    </script>
 
 Then just open client/index.html in the browser, open the console.
 

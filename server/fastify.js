@@ -1,18 +1,25 @@
-const handle = require('./handle');
+const _ = require('lodash');
+const moment = require('moment');
 
-const fastify = require('fastify')({logger: false});
-fastify.get('/', (request, reply) => reply.send({hello: 'world'}));
+const handleSocket = require('./handle');
 
 function handleConnection(connection) {
 	const {socket} = connection;
-	handle(socket);
+	handleSocket(socket);
 }
 
+const fastify = require('fastify')({logger: false});
+fastify.get('/', (request, reply) => reply.send({hello: 'world'}));
 fastify.register(require('fastify-websocket'), {
-		handleConnection,
-		options: {maxPayload: 1048576, path: '/ws'}
+	handle: handleConnection,
+	options: {
+		maxPayload: 1048576, // we set the maximum allowed messages size to 1 MiB (1024 bytes * 1024 bytes)
+		path: '/ws', // we accept only connections matching this path e.g.: ws://localhost:3000/fastify
+		verifyClient: function (info, next) {
+			next(true) // the connection is allowed
+		}
 	}
-);
+});
 
 fastify.listen(3000, (err, address) => {
 	if (err) {

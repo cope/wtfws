@@ -1,12 +1,11 @@
-console.log('wtf ws');
+console.log('WTF WS', window.MODE);
+window.document.title = MODE.toUpperCase() + ' WTF WS';
 
-// Fastify with fastify-websocket
-// const socket = new WebSocket('ws://localhost:3000/ws');
-// const COUNT = 60;
+const useFastify = MODE === 'fastify';
+const WS_URL = useFastify ? 'ws://localhost:3000/ws' : 'ws://localhost:3001'
 
-// Plain http with ws
-const socket = new WebSocket('ws://localhost:3001');
-const COUNT = 100000;
+const socket = new WebSocket(WS_URL);
+const COUNT = useFastify ? 60 : 100000;
 
 const time = () => moment(new Date()).format('[(]HH:mm:ss.ms[)]');
 

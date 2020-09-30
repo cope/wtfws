@@ -6,7 +6,8 @@ const time = () => moment(new Date()).format('[(]HH:mm:ss.ms[)]');
 let id = 0;
 const bytes = {}
 
-function handle(socket) {
+function handleSocket(socket) {
+	console.log('handle');
 	const mySocketID = ++id;
 	bytes[mySocketID] = 0;
 	console.log(time(), '[WS] Client connected', mySocketID);
@@ -33,3 +34,5 @@ function handle(socket) {
 
 	socket.on('error', () => console.log(time(), '[WS] Client errored.'));
 }
+
+module.exports = handleSocket;
