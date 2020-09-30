@@ -1,0 +1,13 @@
+{
+	"name": "wtfws",
+	"version": "1.0.0",
+	"main": "server.js",
+	"license": "MIT",
+	"dependencies": {
+		"fastify": "^3.4.1",
+		"fastify-websocket": "^2.0.7",
+		"lodash": "^4.17.20",
+		"moment": "^2.29.0",
+		"ws": "^7.3.1"
+	}
+}
