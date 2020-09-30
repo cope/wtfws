@@ -1,5 +1,13 @@
 # WTF WS
 
+**UPDATE**: Fixed by [mcollina](https://github.com/mcollina) in [pull request #78](https://github.com/fastify/fastify-websocket/pull/78) :)
+
+```javascript
+    const {socket} = connection;
+    connection.resume(); // <--- this is needed.
+```
+*So, all the below is now obsolete... but, enjoy my pain.*
+
 ## Repro
 
 Notice that both **fastify.js** and **http.js** use the same **handleSocket** function, for handling the socket.

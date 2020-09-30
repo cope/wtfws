@@ -5,7 +5,7 @@ const useFastify = MODE === 'fastify';
 const WS_URL = useFastify ? 'ws://localhost:3000/ws' : 'ws://localhost:3001'
 
 const socket = new WebSocket(WS_URL);
-const COUNT = useFastify ? 60 : 100000;
+const COUNT = useFastify ? 6000 : 100000;
 
 const time = () => moment(new Date()).format('[(]HH:mm:ss.ms[)]');
 

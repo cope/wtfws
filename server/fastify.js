@@ -5,6 +5,7 @@ const handleSocket = require('./handle.socket');
 
 function handleConnection(connection) {
 	const {socket} = connection;
+	connection.resume();
 	handleSocket(socket);
 }
 
